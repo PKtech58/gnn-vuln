@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>dumpcap - The Wireshark Network Analyzer 1.2.0</title>
+<link rel="stylesheet" href="ws.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<h1 id="NAME">NAME</h1>
+
+<p>dumpcap - Dump network traffic</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>dumpcap</b> <span style="white-space: nowrap;">[ <b>-a</b> &lt;capture autostop condition&gt; ] ...</span> <span style="white-space: nowrap;">[ <b>-b</b> &lt;capture ring buffer option&gt;] ...</span> <span style="white-space: nowrap;">[ <b>-B</b> &lt;capture buffer size (Win32 only)&gt; ] </span> <span style="white-space: nowrap;">[ <b>-c</b> &lt;capture packet count&gt; ]</span> <span style="white-space: nowrap;">[ <b>-D</b> ]</span> <span style="white-space: nowrap;">[ <b>-f</b> &lt;capture filter&gt; ]</span> <span style="white-space: nowrap;">[ <b>-h</b> ]</span> <span style="white-space: nowrap;">[ <b>-i</b> &lt;capture interface&gt;|- ]</span> <span style="white-space: nowrap;">[ <b>-L</b> ]</span> <span style="white-space: nowrap;">[ <b>-n</b> ]</span> <span style="white-space: nowrap;">[ <b>-M</b> ]</span> <span style="white-space: nowrap;">[ <b>-p</b> ]</span> <span style="white-space: nowrap;">[ <b>-s</b> &lt;capture snaplen&gt; ]</span> <span style="white-space: nowrap;">[ <b>-S</b> ]</span> <span style="white-space: nowrap;">[ <b>-v</b> ]</span> <span style="white-space: nowrap;">[ <b>-w</b> &lt;outfile&gt; ]</span> <span style="white-space: nowrap;">[ <b>-y</b> &lt;capture link type&gt; ]</span></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>Dumpcap</b> is a network traffic dump tool. It lets you capture packet data from a live network and write the packets to a file. <b>Dumpcap</b>&#39;s native capture file format is <b>libpcap</b> format, which is also the format used by <b>Wireshark</b>, <b>tcpdump</b> and various other tools. When the <b>-n</b> option is specified, the output file is written in the new <b>pcapng</b> format.</p>
+
+<p>Without any options set it will use the pcap library to capture traffic from the first available network interface and writes the received raw packet data, along with the packets&#39; time stamps into a libpcap file.</p>
+
+<p>If the <b>-w</b> option is not specified, <b>Dumpcap</b> writes to a newly created libpcap file with a randomly chosen name. If the <b>-w</b> option is specified, <b>Dumpcap</b> writes to the file specified by that option.</p>
+
+<p>Packet capturing is performed with the pcap library. The capture filter syntax follows the rules of the pcap library.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<dl>
+
+<dt id="a-capture-autostop-condition">-a &lt;capture autostop condition&gt;</dt>
+<dd>
+
+<p>Specify a criterion that specifies when <b>Dumpcap</b> is to stop writing to a capture file. The criterion is of the form <i>test</i><b>:</b><i>value</i>, where <i>test</i> is one of:</p>
+
+<p><b>duration</b>:<i>value</i> Stop writing to a capture file after <i>value</i> seconds have elapsed.</p>
+
+<p><b>filesize</b>:<i>value</i> Stop writing to a capture file after it reaches a size of <i>value</i> kilobytes (where a kilobyte is 1024 bytes). If this option is used together with the -b option, dumpcap will stop writing to the current capture file and switch to the next one if filesize is reached.</p>
+
+<p><b>files</b>:<i>value</i> Stop writing to capture files after <i>value</i> number of files were written.</p>
+
+</dd>
+<dt id="b-capture-ring-buffer-option">-b &lt;capture ring buffer option&gt;</dt>
+<dd>
+
+<p>Cause <b>Dumpcap</b> to run in &quot;multiple files&quot; mode. In &quot;multiple files&quot; mode, <b>Dumpcap</b> will write to several capture files. When the first capture file fills up, <b>Dumpcap</b> will switch writing to the next file and so on.</p>
+
+<p>The created filenames are based on the filename given with the <b>-w</b> option, the number of the file and on the creation date and time, e.g. outfile_00001_20050604120117.pcap, outfile_00001_20050604120523.pcap, ...</p>
+
+<p>With the <i>files</i> option it&#39;s also possible to form a &quot;ring buffer&quot;. This will fill up new files until the number of files specified, at which point <b>Dumpcap</b> will discard the data in the first file and start writing to that file and so on. If the <i>files</i> option is not set, new files filled up until one of the capture stop conditions match (or until the disk if full).</p>
+
+<p>The criterion is of the form <i>key</i><b>:</b><i>value</i>, where <i>key</i> is one of:</p>
+
+<p><b>duration</b>:<i>value</i> switch to the next file after <i>value</i> seconds have elapsed, even if the current file is not completely filled up.</p>
+
+<p><b>filesize</b>:<i>value</i> switch to the next file after it reaches a size of <i>value</i> kilobytes (where a kilobyte is 1024 bytes).</p>
+
+<p><b>files</b>:<i>value</i> begin again with the first file after <i>value</i> number of files were written (form a ring buffer).</p>
+
+</dd>
+<dt id="B-capture-buffer-size-Win32-only">-B &lt;capture buffer size (Win32 only)&gt;</dt>
+<dd>
+
+<p>Win32 only: set capture buffer size (in MB, default is 1MB). This is used by the the capture driver to buffer packet data until that data can be written to disk. If you encounter packet drops while capturing, try to increase this size.</p>
+
+</dd>
+<dt id="c-capture-packet-count">-c &lt;capture packet count&gt;</dt>
+<dd>
+
+<p>Set the maximum number of packets to read when capturing live data.</p>
+
+</dd>
+<dt id="D">-D</dt>
+<dd>
+
+<p>Print a list of the interfaces on which <b>Dumpcap</b> can capture, and exit. For each network interface, a number and an interface name, possibly followed by a text description of the interface, is printed. The interface name or the number can be supplied to the <b>-i</b> option to specify an interface on which to capture.</p>
+
+<p>This can be useful on systems that don&#39;t have a command to list them (e.g., Windows systems, or UNIX systems lacking <b>ifconfig -a</b>); the number can be useful on Windows 2000 and later systems, where the interface name is a somewhat complex string.</p>
+
+<p>Note that &quot;can capture&quot; means that <b>Dumpcap</b> was able to open that device to do a live capture. Depending on your system you may need to run dumpcap from an account with special privileges (for example, as root) to be able to capture network traffic. If &quot;<b>dumpcap -D</b>&quot; is not run from such an account, it will not list any interfaces.</p>
+
+</dd>
+<dt id="f-capture-filter">-f &lt;capture filter&gt;</dt>
+<dd>
+
+<p>Set the capture filter expression.</p>
+
+<p>The entire filter expression must be specified as a single argument (which means that if it contains spaces, it must be quoted).</p>
+
+</dd>
+<dt id="h">-h</dt>
+<dd>
+
+<p>Print the version and options and exits.</p>
+
+</dd>
+<dt id="i-capture-interface">-i &lt;capture interface&gt;|-</dt>
+<dd>
+
+<p>Set the name of the network interface or pipe to use for live packet capture.</p>
+
+<p>Network interface names should match one of the names listed in &quot;<b>dumpcap -D</b>&quot; (described above); a number, as reported by &quot;<b>dumpcap -D</b>&quot;, can also be used. If you&#39;re using UNIX, &quot;<b>netstat -i</b>&quot; or &quot;<b>ifconfig -a</b>&quot; might also work to list interface names, although not all versions of UNIX support the <b>-a</b> option to <b>ifconfig</b>.</p>
+
+<p>If no interface is specified, <b>Dumpcap</b> searches the list of interfaces, choosing the first non-loopback interface if there are any non-loopback interfaces, and choosing the first loopback interface if there are no non-loopback interfaces. If there are no interfaces at all, <b>Dumpcap</b> reports an error and doesn&#39;t start the capture.</p>
+
+<p>Pipe names should be either the name of a FIFO (named pipe) or ``-&#39;&#39; to read data from the standard input. Data read from pipes must be in standard libpcap format.</p>
+
+<p>Note: the Win32 version of <b>Dumpcap</b> doesn&#39;t support capturing from pipes or stdin!</p>
+
+</dd>
+<dt id="L">-L</dt>
+<dd>
+
+<p>List the data link types supported by the interface and exit. The reported link types can be used for the <b>-y</b> option.</p>
+
+</dd>
+<dt id="M">-M</dt>
+<dd>
+
+<p>When used with <b>-D</b>, <b>-L</b> and <b>-S</b>, print verbose, machine-readable output.</p>
+
+</dd>
+<dt id="n">-n</dt>
+<dd>
+
+<p>Write the output file in the pcapng format instead of the default pcap format.</p>
+
+</dd>
+<dt id="p">-p</dt>
+<dd>
+
+<p><i>Don&#39;t</i> put the interface into promiscuous mode. Note that the interface might be in promiscuous mode for some other reason; hence, <b>-p</b> cannot be used to ensure that the only traffic that is captured is traffic sent to or from the machine on which <b>Dumpcap</b> is running, broadcast traffic, and multicast traffic to addresses received by that machine.</p>
+
+</dd>
+<dt id="s-capture-snaplen">-s &lt;capture snaplen&gt;</dt>
+<dd>
+
+<p>Set the default snapshot length to use when capturing live data. No more than <i>snaplen</i> bytes of each network packet will be read into memory, or saved to disk. A value of 0 specifies a snapshot length of 65535, so that the full packet is captured; this is the default.</p>
+
+</dd>
+<dt id="S">-S</dt>
+<dd>
+
+<p>Print statistics for each interface once every second.</p>
+
+</dd>
+<dt id="v">-v</dt>
+<dd>
+
+<p>Print the version and exit.</p>
+
+</dd>
+<dt id="w-outfile">-w &lt;outfile&gt;</dt>
+<dd>
+
+<p>Write raw packet data to <i>outfile</i>.</p>
+
+<p>NOTE: The usage of &quot;-&quot; for stdout is not allowed here!</p>
+
+</dd>
+<dt id="y-capture-link-type">-y &lt;capture link type&gt;</dt>
+<dd>
+
+<p>Set the data link type to use while capturing packets. The values reported by <b>-L</b> are the values that can be used.</p>
+
+</dd>
+</dl>
+
+<h1 id="CAPTURE-FILTER-SYNTAX">CAPTURE FILTER SYNTAX</h1>
+
+<p>See the manual page of pcap-filter(4) or, if that doesn&#39;t exist, tcpdump(8).</p>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>wireshark(1), tshark(1), editcap(1), mergecap(1), capinfos(1), pcap-filter(4), tcpdump(8), pcap(3)</p>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p><b>Dumpcap</b> is part of the <b>Wireshark</b> distribution. The latest version of <b>Wireshark</b> can be found at <a href="http://www.wireshark.org">http://www.wireshark.org</a>.</p>
+
+<p>HTML versions of the Wireshark project man pages are available at: <a href="http://www.wireshark.org/docs/man-pages">http://www.wireshark.org/docs/man-pages</a>.</p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<p><b>Dumpcap</b> is derived from the <b>Wireshark</b> capturing engine code; see the list of authors in the <b>Wireshark</b> man page for a list of authors of that code.</p>
+
+
+</body>
+
+</html>
+
+

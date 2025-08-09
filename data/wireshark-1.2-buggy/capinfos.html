@@ -1,0 +1,141 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>capinfos - The Wireshark Network Analyzer 1.2.0</title>
+<link rel="stylesheet" href="ws.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<h1 id="NAME">NAME</h1>
+
+<p>capinfos - Prints information about capture files</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<p><b>capinfos</b> <span style="white-space: nowrap;">[ <b>-t</b> ]</span> <span style="white-space: nowrap;">[ <b>-E</b> ]</span> <span style="white-space: nowrap;">[ <b>-c</b> ]</span> <span style="white-space: nowrap;">[ <b>-s</b> ]</span> <span style="white-space: nowrap;">[ <b>-d</b> ]</span> <span style="white-space: nowrap;">[ <b>-u</b> ]</span> <span style="white-space: nowrap;">[ <b>-a</b> ]</span> <span style="white-space: nowrap;">[ <b>-e</b> ]</span> <span style="white-space: nowrap;">[ <b>-y</b> ]</span> <span style="white-space: nowrap;">[ <b>-i</b> ]</span> <span style="white-space: nowrap;">[ <b>-z</b> ]</span> <span style="white-space: nowrap;">[ <b>-x</b> ]</span> <span style="white-space: nowrap;">[ <b>-h</b> ]</span> &lt;<i>infile</i>&gt; <i>...</i></p>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p><b>Capinfos</b> is a program that reads one or more capture files and returns some or all available statistics of each &lt;<i>infile</i>&gt;.</p>
+
+<p>The user specifies which statistics to report by specifying flags corresponding to the statistic. If no flags are specified, <b>Capinfos</b> will report all statistics available.</p>
+
+<p><b>Capinfos</b> is able to detect and read the same capture files that are supported by <b>Wireshark</b>. The input files don&#39;t need a specific filename extension; the file format and an optional gzip compression will be automatically detected. Near the beginning of the DESCRIPTION section of wireshark(1) or <a href="http://www.wireshark.org/docs/man-pages/wireshark.html">http://www.wireshark.org/docs/man-pages/wireshark.html</a> is a detailed description of the way <b>Wireshark</b> handles this, which is the same way <b>Capinfos</b> handles this.</p>
+
+<h1 id="OPTIONS">OPTIONS</h1>
+
+<dl>
+
+<dt id="t">-t</dt>
+<dd>
+
+<p>Displays the capture type of the capture file.</p>
+
+</dd>
+<dt id="E">-E</dt>
+<dd>
+
+<p>Displays the per-file encapsulation of the capture file.</p>
+
+</dd>
+<dt id="c">-c</dt>
+<dd>
+
+<p>Counts the number of packets in the capture file.</p>
+
+</dd>
+<dt id="s">-s</dt>
+<dd>
+
+<p>Displays the size of the file, in bytes. This reports the size of the capture file itself.</p>
+
+</dd>
+<dt id="d">-d</dt>
+<dd>
+
+<p>Displays the total length of all packets in the file, in bytes. This counts the size of the packets as they appeared in their original form, not as they appear in this file. For example, if a packet was originally 1514 bytes and only 256 of those bytes were saved to the capture file (if packets were captured with a snaplen or other slicing option), <b>Capinfos</b> will consider the packet to have been 1514 bytes.</p>
+
+</dd>
+<dt id="u">-u</dt>
+<dd>
+
+<p>Displays the capture duration, in seconds. This is the difference in time between the earliest packet seen and latest packet seen.</p>
+
+</dd>
+<dt id="a">-a</dt>
+<dd>
+
+<p>Displays the start time of the capture. <b>Capinfos</b> considers the earliest timestamp seen to be the start time, so the first packet in the capture is not necessarily the earliest - if packets exist &quot;out-of-order&quot;, time-wise, in the capture, <b>Capinfos</b> detects this.</p>
+
+</dd>
+<dt id="e">-e</dt>
+<dd>
+
+<p>Displays the end time of the capture. <b>Capinfos</b> considers the latest timestamp seen to be the end time, so the last packet in the capture is not necessarily the latest - if packets exist &quot;out-of-order&quot;, time-wise, in the capture, <b>Capinfos</b> detects this.</p>
+
+</dd>
+<dt id="y">-y</dt>
+<dd>
+
+<p>Displays the average data rate, in bytes/sec</p>
+
+</dd>
+<dt id="i">-i</dt>
+<dd>
+
+<p>Displays the average data rate, in bits/sec</p>
+
+</dd>
+<dt id="z">-z</dt>
+<dd>
+
+<p>displays the average packet size, in bytes</p>
+
+</dd>
+<dt id="x">-x</dt>
+<dd>
+
+<p>displays the average packet rate, in packets/sec</p>
+
+</dd>
+<dt id="h">-h</dt>
+<dd>
+
+<p>Prints the help listing and exits.</p>
+
+</dd>
+</dl>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<p>tcpdump(8), pcap(3), wireshark(1), mergecap(1), editcap(1), tshark(1), dumpcap(1)</p>
+
+<h1 id="NOTES">NOTES</h1>
+
+<p><b>Capinfos</b> is part of the <b>Wireshark</b> distribution. The latest version of <b>Wireshark</b> can be found at <a href="http://www.wireshark.org">http://www.wireshark.org</a>.</p>
+
+<p>HTML versions of the Wireshark project man pages are available at: <a href="http://www.wireshark.org/docs/man-pages">http://www.wireshark.org/docs/man-pages</a>.</p>
+
+<h1 id="AUTHORS">AUTHORS</h1>
+
+<pre><code>  Original Author
+  -------- ------
+  Ian Schorr           &lt;ian[AT]ianschorr.com&gt;
+
+
+  Contributors
+  ------------
+  Gerald Combs         &lt;gerald[AT]wireshark.org&gt;</code></pre>
+
+
+</body>
+
+</html>
+
+

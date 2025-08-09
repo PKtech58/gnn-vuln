@@ -1,0 +1,461 @@
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501118",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[396,397],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-bootp.c",
+            "TRIGGER_LINE":[3758],
+            "CWE-ID":"CWE-824",
+            "FALOWS":"Access of Uninitialized Pointer"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-bootp.c",
+            "TRIGGER_LINE":[3920,3921,3922],
+            "CWE-ID":"CWE-824",
+            "FALOWS":"Access of Uninitialized Pointer"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-arp.c",
+            "TRIGGER_LINE":[192],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+            "TRIGGER_LINE":[396,397],
+            "CWE-ID":"CWE-824",
+            "FALOWS":"Access of Uninitialized Pointer"
+        }
+    ],
+    "BACKWARD":[]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501119",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[396,397],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-q931.c",
+            "TRIGGER_LINE":[3117],
+            "CWE-ID":"CWE-823",
+            "FALOWS":"Use of Out-of-range Pointer Offset"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-q931.c",
+            "TRIGGER_LINE":[3116],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+            "TRIGGER_LINE":[380],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+            "TRIGGER_LINE":[396,397],
+            "CWE-ID":"CWE-824",
+            "FALOWS":"Access of Uninitialized Pointer"
+        }
+    ],
+    "BACKWARD":[]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501122",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[463,464],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2070,2071],
+            "CWE-ID":"CWE-823",
+            "FALOWS":"Use of Out-of-range Pointer Offset"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[510],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[463,464],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        }
+    ],
+    "BACKWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[470,471,472],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[396],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[396],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2072],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2045],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ber.c",
+            "TRIGGER_LINE":[685],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[1115],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[1115],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501122",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[396],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2070,2071],
+            "CWE-ID":"CWE-823",
+            "FALOWS":"Use of Out-of-range Pointer Offset"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[510],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[463,464],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[463,464],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+                {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[470,471,472],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[396],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        }
+    ],
+    "BACKWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2072],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2045],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ber.c",
+            "TRIGGER_LINE":[685],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[1115],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[1115],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501122",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[396],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2070,2071],
+            "CWE-ID":"CWE-823",
+            "FALOWS":"Use of Out-of-range Pointer Offset"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[510],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[463,464],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[463,464],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+                {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[470,471,472],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[396],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[396],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+                {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2072],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-tcap.c",
+            "TRIGGER_LINE":[2045],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ber.c",
+            "TRIGGER_LINE":[685],
+            "CWE-ID":null,
+            "FALOWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/tvbuff.c",
+            "TRIGGER_LINE":[1115],
+            "CWE-ID":"CWE-822",
+            "FALOWS":"Untrusted Pointer Dereference"
+        }
+    ],
+    "BACKWARD":[]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501150",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+    "TRIGGER_LINE":[421],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[],
+    "BACKWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[423],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[426],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501150",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+    "TRIGGER_LINE":[423],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[421],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ],
+    "BACKWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[426],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501150",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+    "TRIGGER_LINE":[426],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[421],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-afs.c",
+            "TRIGGER_LINE":[423],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ],
+    "BACKWARD":[]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501179",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ieee80211.c",
+    "TRIGGER_LINE":[4024],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ieee80211.c",
+            "TRIGGER_LINE":[4024],
+            "CWE-ID":"CWE-628",
+            "FALOWS":"Function Call with Incorrectly Specified Argument"
+        }
+    ],
+    "BACKWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/proto.c",
+            "TRIGGER_LINE":[3085],
+            "CWE-ID":"CWE-628",
+            "FALOWS":"Function Call with Incorrectly Specified Argument"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/proto.c",
+            "TRIGGER_LINE":[3085],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        }
+    ]
+}
+
+{
+    "CWE-ID":"CWE-125",
+    "FALOWS":"Out-of-bounds Read",
+    "TEST-ID":"501179",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/proto.c",
+    "TRIGGER_LINE":[3085],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ieee80211.c",
+            "TRIGGER_LINE":[4024],
+            "CWE-ID":"CWE-628",
+            "FALOWS":"Function Call with Incorrectly Specified Argument"
+        },
+                {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-ieee80211.c",
+            "TRIGGER_LINE":[4024],
+            "CWE-ID":"CWE-125",
+            "FALOWS":"Out-of-bounds Read"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/proto.c",
+            "TRIGGER_LINE":[3085],
+            "CWE-ID":"CWE-628",
+            "FALOWS":"Function Call with Incorrectly Specified Argument"
+        }
+    ],
+    "BACKWARD":[]
+}

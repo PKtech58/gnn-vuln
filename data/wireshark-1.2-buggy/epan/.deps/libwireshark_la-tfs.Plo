@@ -1,0 +1,8 @@
+libwireshark_la-tfs.lo: tfs.c /usr/include/stdc-predef.h ../config.h \
+ tfs.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:
+
+tfs.h:
