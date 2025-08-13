@@ -1,0 +1,80 @@
+{
+    "CWE-ID":"CWE-125",
+    "TEST-ID":"501118",
+    "Language":"C",
+    "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+    "TRIGGER_LINE":[396,397],
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "FRONTWARD":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-bootp.c",
+            "TRIGGER_LINE":[3758],
+            "CWE-ID":"CWE-824"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-bootp.c",
+            "TRIGGER_LINE":[3920,3921,3922],
+            "CWE-ID":"CWE-824"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-arp.c",
+            "TRIGGER_LINE":[192],
+            "CWE-ID":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/strutil.c",
+            "TRIGGER_LINE":[396,397],
+            "CWE-ID":"CWE-824"
+        }
+    ],
+    "BACKWARD":[]
+}
+
+
+{
+    "CWE-ID":"CWE-476",
+    "FLAWS":"NULL Pointer Dereference",
+    "TEST-ID":"501166",
+    "Language":"C",
+    "STATE":"bad",
+    "STATUS":"accepted",
+    "occurrences":[
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[547],
+            "CWE-ID":null,
+            "FLAWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[562],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[453],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[611],
+            "CWE-ID":null,
+            "FLAWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[494],
+            "CWE-ID":null,
+            "FLAWS":null
+        },
+        {
+            "PATH":"./wireshark-1.2-buggy/epan/dissectors/packet-dcerpc-nt.c",
+            "TRIGGER_LINE":[501],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        }
+    ]
+}
