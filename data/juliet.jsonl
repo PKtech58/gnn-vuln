@@ -2,12 +2,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82110",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82110-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_01.c",
+            "PATH":"../data/juliet/82110-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_01.c",
             "TRIGGER_LINE":[30],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -19,12 +19,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82111",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82111-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_02.c",
+            "PATH":"../data/juliet/82111-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_02.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -36,12 +36,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82112",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82112-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_03.c",
+            "PATH":"../data/juliet/82112-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_03.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -53,12 +53,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82113",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82113-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_04.c",
+            "PATH":"../data/juliet/82113-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_04.c",
             "TRIGGER_LINE":[41],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -70,12 +70,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82114",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82114-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_05.c",
+            "PATH":"../data/juliet/82114-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_05.c",
             "TRIGGER_LINE":[41],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -87,12 +87,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82115",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82115-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_06.c",
+            "PATH":"../data/juliet/82115-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_06.c",
             "TRIGGER_LINE":[40],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -104,12 +104,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82116",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82116-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_07.c",
+            "PATH":"../data/juliet/82116-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_07.c",
             "TRIGGER_LINE":[40],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -121,12 +121,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82117",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82117-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_08.c",
+            "PATH":"../data/juliet/82117-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_08.c",
             "TRIGGER_LINE":[48],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -138,12 +138,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82118",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82118-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_09.c",
+            "PATH":"../data/juliet/82118-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_09.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -155,12 +155,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82119",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82119-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_10.c",
+            "PATH":"../data/juliet/82119-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_10.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -172,12 +172,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82120",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82120-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_11.c",
+            "PATH":"../data/juliet/82120-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_11.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -189,12 +189,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82121",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82121-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_12.c",
+            "PATH":"../data/juliet/82121-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_12.c",
             "TRIGGER_LINE":[40],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -206,12 +206,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82122",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82122-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_13.c",
+            "PATH":"../data/juliet/82122-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_13.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -223,12 +223,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82123",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82123-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_14.c",
+            "PATH":"../data/juliet/82123-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_14.c",
             "TRIGGER_LINE":[35],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -240,12 +240,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82124",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82124-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_15.c",
+            "PATH":"../data/juliet/82124-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_15.c",
             "TRIGGER_LINE":[42],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -257,12 +257,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82125",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82125-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_16.c",
+            "PATH":"../data/juliet/82125-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_16.c",
             "TRIGGER_LINE":[36],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -274,12 +274,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82126",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82126-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_17.c",
+            "PATH":"../data/juliet/82126-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_17.c",
             "TRIGGER_LINE":[36],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -291,12 +291,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82127",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82127-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_18.c",
+            "PATH":"../data/juliet/82127-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_18.c",
             "TRIGGER_LINE":[36],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -308,12 +308,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82128",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82128-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_21.c",
+            "PATH":"../data/juliet/82128-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_21.c",
             "TRIGGER_LINE":[31],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -325,12 +325,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82129",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82129-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_22b.c",
+            "PATH":"../data/juliet/82129-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_22b.c",
             "TRIGGER_LINE":[31],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -342,12 +342,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82130",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82130-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_31.c",
+            "PATH":"../data/juliet/82130-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_31.c",
             "TRIGGER_LINE":[33],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -359,12 +359,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82131",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82131-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_32.c",
+            "PATH":"../data/juliet/82131-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_32.c",
             "TRIGGER_LINE":[38],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -376,12 +376,12 @@
 //    "TARGET-CWE-ID":"CWE-190",
 //    "FLAWS":"Integer Overflow or Wraparound",
 //    "TEST-ID":"82132",
-//    "Language":"C++",
+//    "LANGUAGE":"C++",
 //    "STATE":"mixed",
 //    "STATUS":"accepted",
-//    "occurrences":[
+//    "OCCURRENCES":[
 //        {
-//            "PATH":"./juliet/82132-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_33.cpp",
+//            "PATH":"../data/juliet/82132-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_33.cpp",
 //            "TRIGGER_LINE":[36],
 //            "CWE-ID":"CWE-190",
 //            "FLAWS":"Integer Overflow or Wraparound"
@@ -393,12 +393,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82133",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82133-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_34.c",
+            "PATH":"../data/juliet/82133-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_34.c",
             "TRIGGER_LINE":[40],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -410,12 +410,12 @@
     "TARGET-CWE-ID":"CWE-190",
     "FLAWS":"Integer Overflow or Wraparound",
     "TEST-ID":"82134",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/82134-v1.0.0/src/testcases/CWE190_Integer_Overflow/s1/CWE190_Integer_Overflow__char_fscanf_add_41.c",
+            "PATH":"../data/juliet/82134-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_41.c",
             "TRIGGER_LINE":[26],
             "CWE-ID":"CWE-190",
             "FLAWS":"Integer Overflow or Wraparound"
@@ -424,15 +424,83 @@
 }
 
 {
+    "TARGET-CWE-ID":"CWE-190",
+    "FLAWS":"Integer Overflow or Wraparound",
+    "TEST-ID":"82135",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/82135-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c",
+            "TRIGGER_LINE":[36],
+            "CWE-ID":"CWE-190",
+            "FLAWS":"Integer Overflow or Wraparound"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-190",
+    "FLAWS":"Integer Overflow or Wraparound",
+    "TEST-ID":"82135",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/82135-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_42.c",
+            "TRIGGER_LINE":[36],
+            "CWE-ID":"CWE-190",
+            "FLAWS":"Integer Overflow or Wraparound"
+        }
+    ]
+}
+
+//{
+//    "TARGET-CWE-ID":"CWE-190",
+//    "FLAWS":"Integer Overflow or Wraparound",
+//    "TEST-ID":"82136",
+//    "LANGUAGE":"C++",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/82136-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_43.cpp",
+//            "TRIGGER_LINE":[38],
+//            "CWE-ID":"CWE-190",
+//            "FLAWS":"Integer Overflow or Wraparound"
+//        }
+//    ]
+//}
+
+//{
+//    "TARGET-CWE-ID":"CWE-190",
+//    "FLAWS":"Integer Overflow or Wraparound",
+//    "TEST-ID":"82137",
+//    "LANGUAGE":"C",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/82137-v1.0.0/src/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__char_fscanf_add_44.c",
+//            "TRIGGER_LINE":[26],
+//            "CWE-ID":"CWE-190",
+//            "FLAWS":"Integer Overflow or Wraparound"
+//        }
+//    ]
+//}
+
+{
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104532",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_01.c",
+            "PATH":"../data/juliet/104532-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_01.c",
             "TRIGGER_LINE":[26],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -444,12 +512,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104533",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_02.c",
+            "PATH":"../data/juliet/104533-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_02.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -461,12 +529,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104534",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_03.c",
+            "PATH":"../data/juliet/104534-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_03.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -478,12 +546,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104535",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_04.c",
+            "PATH":"../data/juliet/104535-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_04.c",
             "TRIGGER_LINE":[34],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -495,12 +563,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104536",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c",
+            "PATH":"../data/juliet/104536-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_05.c",
             "TRIGGER_LINE":[34],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -512,12 +580,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104537",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_06.c",
+            "PATH":"../data/juliet/104537-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_06.c",
             "TRIGGER_LINE":[33],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -529,12 +597,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104538",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_07.c",
+            "PATH":"../data/juliet/104538-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_07.c",
             "TRIGGER_LINE":[33],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -546,12 +614,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104539",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_08.c",
+            "PATH":"../data/juliet/104539-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_08.c",
             "TRIGGER_LINE":[41],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -563,12 +631,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104540",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_09.c",
+            "PATH":"../data/juliet/104540-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_09.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -580,12 +648,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104541",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_10.c",
+            "PATH":"../data/juliet/104541-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_10.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -597,12 +665,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104542",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_11.c",
+            "PATH":"../data/juliet/104542-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_11.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -614,12 +682,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104543",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_12.c",
+            "PATH":"../data/juliet/104543-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_12.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -631,12 +699,12 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104544",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_13.c",
+            "PATH":"../data/juliet/104544-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_13.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
@@ -648,15 +716,1086 @@
     "TARGET-CWE-ID":"CWE-476",
     "FLAWS":"NULL Pointer Dereference",
     "TEST-ID":"104545",
-    "Language":"C",
+    "LANGUAGE":"C",
     "STATE":"mixed",
     "STATUS":"accepted",
-    "occurrences":[
+    "OCCURRENCES":[
         {
-            "PATH":"./juliet/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_14.c",
+            "PATH":"../data/juliet/104545-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_14.c",
             "TRIGGER_LINE":[28],
             "CWE-ID":"CWE-476",
             "FLAWS":"NULL Pointer Dereference"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-476",
+    "FLAWS":"NULL Pointer Dereference",
+    "TEST-ID":"104546",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/104546-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_15.c",
+            "TRIGGER_LINE":[29],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-476",
+    "FLAWS":"NULL Pointer Dereference",
+    "TEST-ID":"104547",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/104547-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_16.c",
+            "TRIGGER_LINE":[28],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-476",
+    "FLAWS":"NULL Pointer Dereference",
+    "TEST-ID":"104548",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/104548-v1.0.0/src/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__binary_if_17.c",
+            "TRIGGER_LINE":[29],
+            "CWE-ID":"CWE-476",
+            "FLAWS":"NULL Pointer Dereference"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240263",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240263-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_01.c",
+            "TRIGGER_LINE":[36],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240264",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240264-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_02.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240265",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240265-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_03.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240266",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240266-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_04.c",
+            "TRIGGER_LINE":[47],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240267",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240267-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_05.c",
+            "TRIGGER_LINE":[47],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240268",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240268-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_06.c",
+            "TRIGGER_LINE":[46],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240269",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240269-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_07.c",
+            "TRIGGER_LINE":[46],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240270",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240270-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_08.c",
+            "TRIGGER_LINE":[54],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240271",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240271-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_09.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240272",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240272-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_10.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240273",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240273-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_11.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240274",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240274-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_12.c",
+            "TRIGGER_LINE":[49],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240275",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240275-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_13.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240276",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240276-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_14.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240277",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240277-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_15.c",
+            "TRIGGER_LINE":[48],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240278",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240278-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_16.c",
+            "TRIGGER_LINE":[42],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240279",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240279-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_17.c",
+            "TRIGGER_LINE":[42],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240280",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240280-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_18.c",
+            "TRIGGER_LINE":[40],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+//{
+//    "TARGET-CWE-ID":"CWE-416",
+//    "FLAWS":"Use After Free",
+//    "TEST-ID":"240281",
+//    "LANGUAGE":"C++",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/240281-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_43.cpp",
+//            "TRIGGER_LINE":[44],
+//            "CWE-ID":"CWE-416",
+//            "FLAWS":"Use After Free"
+//        }
+//    ]
+//}
+
+//{
+//    "TARGET-CWE-ID":"CWE-416",
+//    "FLAWS":"Use After Free",
+//    "TEST-ID":"240282",
+//    "LANGUAGE":"C++",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/240282-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_char_62a.cpp",
+//            "TRIGGER_LINE":[37],
+//            "CWE-ID":"CWE-416",
+//            "FLAWS":"Use After Free"
+//        }
+//    ]
+//}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240283",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240283-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_01.c",
+            "TRIGGER_LINE":[41],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240284",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240284-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_02.c",
+            "TRIGGER_LINE":[46],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240285",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240285-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_03.c",
+            "TRIGGER_LINE":[46],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240286",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240286-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_04.c",
+            "TRIGGER_LINE":[52],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240287",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240287-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_05.c",
+            "TRIGGER_LINE":[52],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240288",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240288-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_06.c",
+            "TRIGGER_LINE":[51],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-416",
+    "FLAWS":"Use After Free",
+    "TEST-ID":"240289",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/240289-v2.0.0/src/testcases/CWE416_Use_After_Free/CWE416_Use_After_Free__malloc_free_int64_t_07.c",
+            "TRIGGER_LINE":[51],
+            "CWE-ID":"CWE-416",
+            "FLAWS":"Use After Free"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248619",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248619-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b.c",
+            "TRIGGER_LINE":[71],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248618",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248618-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_67b.c",
+            "TRIGGER_LINE":[71],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248617",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248617-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_66b.c",
+            "TRIGGER_LINE":[67],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248616",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248616-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_65b.c",
+            "TRIGGER_LINE":[65],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248615",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248615-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_64b.c",
+            "TRIGGER_LINE":[69],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248614",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248614-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_63b.c",
+            "TRIGGER_LINE":[66],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+//{
+//    "TARGET-CWE-ID":"CWE-78",
+//    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+//    "TEST-ID":"248613",
+//    "LANGUAGE":"C",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/248613-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_62a.cpp",
+//            "TRIGGER_LINE":[55],
+//            "CWE-ID":"CWE-78",
+//            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+//        }
+//    ]
+//}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248612",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248612-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_61a.c",
+            "TRIGGER_LINE":[72],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248611",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248611-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_54e.c",
+            "TRIGGER_LINE":[67],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248610",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248610-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_53d.c",
+            "TRIGGER_LINE":[67],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248609",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248609-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_52c.c",
+            "TRIGGER_LINE":[67],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248608",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248608-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_51b.c",
+            "TRIGGER_LINE":[67],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248607",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248607-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_45.c",
+            "TRIGGER_LINE":[69],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248606",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248606-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_44.c",
+            "TRIGGER_LINE":[65],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+//{
+//    "TARGET-CWE-ID":"CWE-78",
+//    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+//    "TEST-ID":"248605",
+//    "LANGUAGE":"C",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/248605-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_43.cpp",
+//            "TRIGGER_LINE":[155],
+//            "CWE-ID":"CWE-78",
+//            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+//        }
+//    ]
+//}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248604",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248604-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_42.c",
+            "TRIGGER_LINE":[153],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248603",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248603-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_41.c",
+            "TRIGGER_LINE":[65],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248602",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248602-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_34.c",
+            "TRIGGER_LINE":[157],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+//{
+//    "TARGET-CWE-ID":"CWE-78",
+//    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+//    "TEST-ID":"248601",
+//    "LANGUAGE":"C",
+//    "STATE":"mixed",
+//    "STATUS":"accepted",
+//    "OCCURRENCES":[
+//        {
+//            "PATH":"../data/juliet/248601-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_33.cpp",
+//            "TRIGGER_LINE":[153],
+//            "CWE-ID":"CWE-78",
+//            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+//        }
+//    ]
+//}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248600",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248600-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_32.c",
+            "TRIGGER_LINE":[155],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248599",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248599-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248598",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248598-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22a.c",
+            "TRIGGER_LINE":[55],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248597",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248597-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_21.c",
+            "TRIGGER_LINE":[160],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248596",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248596-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_18.c",
+            "TRIGGER_LINE":[149],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248595",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248595-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_17.c",
+            "TRIGGER_LINE":[151],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248594",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248594-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_16.c",
+            "TRIGGER_LINE":[151],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248593",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248593-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_15.c",
+            "TRIGGER_LINE":[156],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248592",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248592-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_14.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248591",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248591-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_13.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248590",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248590-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_12.c",
+            "TRIGGER_LINE":[155],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248589",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248589-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_11.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248588",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248588-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_10.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
+        }
+    ]
+}
+
+{
+    "TARGET-CWE-ID":"CWE-78",
+    "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')",
+    "TEST-ID":"248587",
+    "LANGUAGE":"C",
+    "STATE":"mixed",
+    "STATUS":"accepted",
+    "OCCURRENCES":[
+        {
+            "PATH":"../data/juliet/248587-v2.0.0/src/testcases/CWE78_OS_Command_Injection/s09/CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_09.c",
+            "TRIGGER_LINE":[150],
+            "CWE-ID":"CWE-78",
+            "FLAWS":"Improper Neutralization of Special Elements used in an OS Commands ('OS Command Injection')"
         }
     ]
 }
