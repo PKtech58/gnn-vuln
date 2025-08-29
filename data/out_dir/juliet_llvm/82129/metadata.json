@@ -1,0 +1,43 @@
+{
+  "test_id": "82129",
+  "cwe_id": "CWE-190",
+  "trigger_lines": [
+    31
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\82129-v1.0.0\\src\\testcases\\CWE190_Integer_Overflow\\s01\\CWE190_Integer_Overflow__char_fscanf_add_22a.c",
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\82129-v1.0.0\\src\\testcases\\CWE190_Integer_Overflow\\s01\\CWE190_Integer_Overflow__char_fscanf_add_22b.c"
+  ],
+  "functions": {
+    "good": [
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G1Sink",
+      "goodB2G1",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G2Sink",
+      "goodB2G2",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodG2BSink",
+      "goodG2B",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_good",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G1Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G2Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodG2BSink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_good",
+      "goodG2B",
+      "goodB2G1",
+      "goodB2G2",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G1Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G2Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodG2BSink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G1Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodB2G2Sink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_goodG2BSink"
+    ],
+    "bad": [
+      "CWE190_Integer_Overflow__char_fscanf_add_22_badSink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_bad",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_badSink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_bad",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_badSink",
+      "CWE190_Integer_Overflow__char_fscanf_add_22_badSink"
+    ]
+  }
+}

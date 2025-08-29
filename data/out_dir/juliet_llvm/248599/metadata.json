@@ -1,0 +1,22 @@
+{
+  "test_id": "248599",
+  "cwe_id": "CWE-78",
+  "trigger_lines": [
+    150
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\248599-v2.0.0\\src\\testcases\\CWE78_OS_Command_Injection\\s09\\CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31.c"
+  ],
+  "functions": {
+    "good": [
+      "goodG2B",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31_good",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31_good",
+      "goodG2B"
+    ],
+    "bad": [
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31_bad",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_31_bad"
+    ]
+  }
+}

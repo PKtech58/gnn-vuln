@@ -1,0 +1,23 @@
+[
+  {
+    "test_loss": 0.16569794714450836,
+    "cwe_results": {
+      "CWE-119": {
+        "accuracy": 0.9,
+        "precision": 0.8955223880597015,
+        "recall": 1.0,
+        "f1_score": 0.9448818897637795
+      }
+    },
+    "trigger_results": {
+      "CWE-119": {
+        "accuracy": 0.9714285714285714,
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1_score": 0.9230769230769231
+      }
+    },
+    "approach": "CWE-119",
+    "num_test_samples": 7
+  }
+]

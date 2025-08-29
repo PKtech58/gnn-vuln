@@ -1,0 +1,24 @@
+{
+  "test_id": "104546",
+  "cwe_id": "CWE-476",
+  "trigger_lines": [
+    29
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\104546-v1.0.0\\src\\testcases\\CWE476_NULL_Pointer_Dereference\\CWE476_NULL_Pointer_Dereference__binary_if_15.c"
+  ],
+  "functions": {
+    "good": [
+      "good1",
+      "good2",
+      "good1",
+      "good2",
+      "CWE476_NULL_Pointer_Dereference__binary_if_15_good",
+      "CWE476_NULL_Pointer_Dereference__binary_if_15_good"
+    ],
+    "bad": [
+      "CWE476_NULL_Pointer_Dereference__binary_if_15_bad",
+      "CWE476_NULL_Pointer_Dereference__binary_if_15_bad"
+    ]
+  }
+}

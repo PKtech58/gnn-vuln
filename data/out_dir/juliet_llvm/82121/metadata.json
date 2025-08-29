@@ -1,0 +1,24 @@
+{
+  "test_id": "82121",
+  "cwe_id": "CWE-190",
+  "trigger_lines": [
+    40
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\82121-v1.0.0\\src\\testcases\\CWE190_Integer_Overflow\\s01\\CWE190_Integer_Overflow__char_fscanf_add_12.c"
+  ],
+  "functions": {
+    "good": [
+      "goodB2G",
+      "goodG2B",
+      "CWE190_Integer_Overflow__char_fscanf_add_12_good",
+      "CWE190_Integer_Overflow__char_fscanf_add_12_good",
+      "goodG2B",
+      "goodB2G"
+    ],
+    "bad": [
+      "CWE190_Integer_Overflow__char_fscanf_add_12_bad",
+      "CWE190_Integer_Overflow__char_fscanf_add_12_bad"
+    ]
+  }
+}

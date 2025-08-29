@@ -1,0 +1,25 @@
+{
+  "test_id": "248598",
+  "cwe_id": "CWE-78",
+  "trigger_lines": [
+    55
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\248598-v2.0.0\\src\\testcases\\CWE78_OS_Command_Injection\\s09\\CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22a.c",
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\248598-v2.0.0\\src\\testcases\\CWE78_OS_Command_Injection\\s09\\CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22b.c"
+  ],
+  "functions": {
+    "good": [
+      "goodG2B1",
+      "goodG2B2",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22_good",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22_good",
+      "goodG2B1",
+      "goodG2B2"
+    ],
+    "bad": [
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22_bad",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_22_bad"
+    ]
+  }
+}

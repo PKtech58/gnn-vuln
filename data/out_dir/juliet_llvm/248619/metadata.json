@@ -1,0 +1,31 @@
+{
+  "test_id": "248619",
+  "cwe_id": "CWE-78",
+  "trigger_lines": [
+    71
+  ],
+  "file_group": [
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\248619-v2.0.0\\src\\testcases\\CWE78_OS_Command_Injection\\s09\\CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68a.c",
+    "C:\\Users\\psych\\Project\\gnn-vuln\\data\\juliet\\248619-v2.0.0\\src\\testcases\\CWE78_OS_Command_Injection\\s09\\CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b.c"
+  ],
+  "functions": {
+    "good": [
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_goodG2BSink",
+      "goodG2B",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68_good",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_goodG2BSink",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68_good",
+      "goodG2B",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_goodG2BSink",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_goodG2BSink"
+    ],
+    "bad": [
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_badSink",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68_bad",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_badSink",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68_bad",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_badSink",
+      "CWE78_OS_Command_Injection__wchar_t_listen_socket_w32_spawnlp_68b_badSink"
+    ]
+  }
+}
