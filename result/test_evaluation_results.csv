@@ -1,2 +1,2 @@
 test_loss,cwe_results,trigger_results,approach,num_test_samples
-6.328505516052246,"{'CWE-119': {'accuracy': 0.18571428571428572, 'precision': 1.0, 'recall': 0.05, 'f1_score': 0.09523809523809523}}","{'CWE-119': {'accuracy': 0.8285714285714286, 'precision': 0.0, 'recall': 0.0, 'f1_score': 0.0}}",CWE-119,7
+2.4258201122283936,"{'CWE-119': {'accuracy': 0.8571428571428571, 'precision': 0.8571428571428571, 'recall': 1.0, 'f1_score': 0.9230769230769231}}","{'CWE-119': {'accuracy': 0.7142857142857143, 'precision': 0.375, 'recall': 1.0, 'f1_score': 0.5454545454545454}}",CWE-119,7

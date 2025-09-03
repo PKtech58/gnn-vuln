@@ -56,6 +56,7 @@ def extract_clean_filename(path):
     return os.path.basename(normalized)
 
 
+
 class VulnerabilityDataset:
     """脆弱性データセット（交差検証・個別CWE対応版）"""
     
@@ -379,6 +380,72 @@ class VulnerabilityDataset:
                     indices.append(i)
         
         return indices
+    
+    # VulnerabilityDatasetクラスに追加
+    def get_initial_train_test_split(self, test_size=0.2):
+        """最初の学習・テスト分割（ファイル単位）"""
+        files = list(self.file_groups.keys())
+        
+        if len(files) < 2:
+            logger.warning("ファイル数が少ないため、全データを学習用に使用")
+            return list(range(len(self.graphs))), []
+        
+        train_files, test_files = train_test_split(files, test_size=test_size, random_state=42)
+        
+        train_indices = self._get_graph_indices_by_files(train_files)
+        test_indices = self._get_graph_indices_by_files(test_files)
+        
+        logger.info(f"📊 初期分割結果:")
+        logger.info(f"   学習用ファイル: {len(train_files)} ({len(train_indices)} graphs)")
+        logger.info(f"   テスト用ファイル: {len(test_files)} ({len(test_indices)} graphs)")
+        
+        return train_indices, test_indices
+
+    def get_cross_validation_splits_from_indices(self, train_indices, k_folds=5):
+        """指定されたインデックスからの交差検証分割"""
+        # 学習データのファイル名を取得
+        train_files = []
+        for i in train_indices:
+            if hasattr(self.graphs[i], 'metadata') and len(self.graphs[i].metadata) > 0:
+                filename = self.graphs[i].metadata[0].get('filename', '')
+                if filename and filename not in train_files:
+                    train_files.append(filename)
+        
+        if len(train_files) < k_folds:
+            logger.warning(f"学習用ファイル数({len(train_files)})がfold数({k_folds})より少ないため、ファイル数に調整")
+            k_folds = len(train_files)
+        
+        kf = KFold(n_splits=k_folds, shuffle=True, random_state=42)
+        
+        splits = []
+        for fold, (train_files_idx, val_files_idx) in enumerate(kf.split(train_files)):
+            fold_train_files = [train_files[i] for i in train_files_idx]
+            fold_val_files = [train_files[i] for i in val_files_idx]
+            
+            # ファイル名からグラフインデックスを取得（学習データ内での分割）
+            fold_train_indices = []
+            fold_val_indices = []
+            
+            for i in train_indices:
+                if hasattr(self.graphs[i], 'metadata') and len(self.graphs[i].metadata) > 0:
+                    filename = self.graphs[i].metadata[0].get('filename', '')
+                    if filename in fold_train_files:
+                        fold_train_indices.append(i)
+                    elif filename in fold_val_files:
+                        fold_val_indices.append(i)
+            
+            splits.append({
+                'fold': fold + 1,
+                'train_indices': fold_train_indices,
+                'val_indices': fold_val_indices,
+                'train_files': fold_train_files,
+                'val_files': fold_val_files
+            })
+            
+            logger.info(f"Fold {fold + 1}: Train={len(fold_train_indices)}, Val={len(fold_val_indices)}")
+        
+        return splits
+    
 
 
 class MultiTaskVulnerabilityGNN(nn.Module):
@@ -531,9 +598,9 @@ class VulnerabilityTrainer:
         cv_summary = self._summarize_cross_validation(fold_results)
         
         return cv_summary, fold_results
-    
+
     def _train_single_fold(self, train_graphs, val_graphs, epochs, batch_size, learning_rate):
-        """単一fold学習"""
+        """単一fold学習（簡潔版）"""
         # データローダー
         train_loader = DataLoader(train_graphs, batch_size=batch_size, shuffle=True)
         val_loader = DataLoader(val_graphs, batch_size=batch_size, shuffle=False)
@@ -547,28 +614,94 @@ class VulnerabilityTrainer:
         train_losses = []
         val_losses = []
         val_accuracies = []
+        detailed_metrics_history = []
         
         for epoch in range(epochs):
             # 訓練
             train_loss = self._train_epoch(train_loader, optimizer, cwe_criterion, trigger_criterion)
             
-            # 検証
-            val_loss, val_acc = self._evaluate(val_loader, cwe_criterion, trigger_criterion)
+            # 検証（詳細評価）
+            val_loss, val_acc, predictions = self._evaluate(
+                val_loader, cwe_criterion, trigger_criterion, return_predictions=True
+            )
             
             # 履歴保存
             train_losses.append(train_loss)
             val_losses.append(val_loss)
             val_accuracies.append(val_acc)
             
-            # ログ出力
+            # 詳細メトリクス計算（最終エポックのみ）
+            if epoch == epochs - 1:
+                cwe_metrics = self.calculate_detailed_metrics(
+                    predictions['cwe_labels'], predictions['cwe_preds'], 
+                    task_name="CWE", class_names=self.target_cwes
+                )
+                trigger_metrics = self.calculate_detailed_metrics(
+                    predictions['trigger_labels'], predictions['trigger_preds'], 
+                    task_name="Trigger", class_names=self.target_cwes
+                )
+                
+                epoch_metrics = {
+                    'epoch': epoch + 1,
+                    'cwe_metrics': cwe_metrics,
+                    'trigger_metrics': trigger_metrics
+                }
+                detailed_metrics_history.append(epoch_metrics)
+            
+            # ログ出力（10エポックごと）
             if (epoch + 1) % 10 == 0:
                 logger.info(f"  Epoch {epoch+1}/{epochs}: Train Loss={train_loss:.4f}, Val Loss={val_loss:.4f}, Val Acc={val_acc:.4f}")
         
         return {
             'train_losses': train_losses,
             'val_losses': val_losses,
-            'val_accuracies': val_accuracies
+            'val_accuracies': val_accuracies,
+            'detailed_metrics': detailed_metrics_history
         }
+
+
+    def _log_detailed_metrics(self, metrics_data, prefix=""):
+        """詳細メトリクスのログ出力"""
+        logger.info(f"    📊 {prefix} 詳細メトリクス:")
+        
+        # CWE分類結果
+        cwe_found = False
+        for cwe in self.target_cwes:
+            cwe_key = f'CWE_{cwe}'
+            if cwe_key in metrics_data['cwe_metrics']:
+                metrics = metrics_data['cwe_metrics'][cwe_key]
+                cm = metrics['confusion_matrix']
+                logger.info(f"      {cwe}: Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                logger.info(f"        {cwe} 混同行列:")
+                logger.info(f"          TN={cm['TN']}, FP={cm['FP']}")
+                logger.info(f"          FN={cm['FN']}, TP={cm['TP']}")
+                cwe_found = True
+        
+        if not cwe_found:
+            logger.info(f"      CWE分類: データなし")
+        
+        # トリガーライン検出結果
+        trigger_found = False
+        for cwe in self.target_cwes:
+            trigger_key = f'Trigger_{cwe}'
+            if trigger_key in metrics_data['trigger_metrics']:
+                metrics = metrics_data['trigger_metrics'][trigger_key]
+                cm = metrics['confusion_matrix']
+                logger.info(f"      {cwe} (Trigger): Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                logger.info(f"        {cwe} トリガーライン混同行列:")
+                logger.info(f"          TN={cm['TN']}, FP={cm['FP']}")
+                logger.info(f"          FN={cm['FN']}, TP={cm['TP']}")
+                trigger_found = True
+        
+        if not trigger_found:
+            logger.info(f"      トリガーライン検出: データなし")
+        
+        # デバッグ情報の追加
+        logger.debug(f"      CWE metrics keys: {list(metrics_data['cwe_metrics'].keys())}")
+        logger.debug(f"      Trigger metrics keys: {list(metrics_data['trigger_metrics'].keys())}")
+
+
+
     
     def _train_epoch(self, train_loader, optimizer, cwe_criterion, trigger_criterion):
         """1エポック学習"""
@@ -600,12 +733,16 @@ class VulnerabilityTrainer:
         
         return total_loss / len(train_loader)
     
-    def _evaluate(self, loader, cwe_criterion, trigger_criterion):
-        """評価"""
+    def _evaluate(self, loader, cwe_criterion, trigger_criterion, return_predictions=False):
+        """評価（混同行列対応版）"""
         self.model.eval()
         total_loss = 0
-        correct_predictions = 0
-        total_predictions = 0
+        
+        # 予測結果とラベルを保存するリスト
+        all_cwe_preds = []
+        all_cwe_labels = []
+        all_trigger_preds = []
+        all_trigger_labels = []
         
         with torch.no_grad():
             for batch in loader:
@@ -624,18 +761,149 @@ class VulnerabilityTrainer:
                 trigger_loss = trigger_criterion(trigger_pred, trigger_labels)
                 total_loss += (cwe_loss + trigger_loss).item()
                 
-                # 精度計算
+                # 予測値を0/1に変換
                 cwe_preds = (torch.sigmoid(cwe_pred) > 0.5).int()
                 trigger_preds = (torch.sigmoid(trigger_pred) > 0.5).int()
                 
-                cwe_correct = (cwe_preds == cwe_labels.int()).sum().item()
-                trigger_correct = (trigger_preds == trigger_labels.int()).sum().item()
-                
-                correct_predictions += (cwe_correct + trigger_correct)
-                total_predictions += (cwe_labels.numel() + trigger_labels.numel())
+                # リストに追加
+                all_cwe_preds.extend(cwe_preds.cpu().numpy())
+                all_cwe_labels.extend(cwe_labels.int().cpu().numpy())
+                all_trigger_preds.extend(trigger_preds.cpu().numpy())
+                all_trigger_labels.extend(trigger_labels.int().cpu().numpy())
         
-        accuracy = correct_predictions / total_predictions if total_predictions > 0 else 0.0
-        return total_loss / len(loader), accuracy
+        # numpy配列に変換
+        all_cwe_preds = np.array(all_cwe_preds)
+        all_cwe_labels = np.array(all_cwe_labels)
+        all_trigger_preds = np.array(all_trigger_preds)
+        all_trigger_labels = np.array(all_trigger_labels)
+        
+        # 精度計算
+        cwe_accuracy = accuracy_score(all_cwe_labels.flatten(), all_cwe_preds.flatten())
+        trigger_accuracy = accuracy_score(all_trigger_labels.flatten(), all_trigger_preds.flatten())
+        overall_accuracy = (cwe_accuracy + trigger_accuracy) / 2
+        
+        avg_loss = total_loss / len(loader)
+        
+        if return_predictions:
+            return avg_loss, overall_accuracy, {
+                'cwe_preds': all_cwe_preds,
+                'cwe_labels': all_cwe_labels,
+                'trigger_preds': all_trigger_preds,
+                'trigger_labels': all_trigger_labels,
+                'cwe_accuracy': cwe_accuracy,
+                'trigger_accuracy': trigger_accuracy
+            }
+        
+        return avg_loss, overall_accuracy
+
+    def calculate_detailed_metrics(self, y_true, y_pred, task_name="", class_names=None):
+        """詳細な評価メトリクス計算（混同行列含む）"""
+        if class_names is None:
+            class_names = self.target_cwes
+        
+        logger.debug(f"calculate_detailed_metrics: task={task_name}, classes={class_names}")
+        logger.debug(f"y_true shape: {y_true.shape}, y_pred shape: {y_pred.shape}")
+        
+        results = {}
+        
+        # マルチラベル分類の場合
+        if y_true.shape[1] > 1:
+            # 各クラスごとの混同行列
+            cm_per_class = multilabel_confusion_matrix(y_true, y_pred)
+            logger.debug(f"multilabel_confusion_matrix shape: {cm_per_class.shape}")
+            
+            for i, class_name in enumerate(class_names):
+                if i < len(cm_per_class):
+                    tn, fp, fn, tp = cm_per_class[i].ravel()
+                    logger.debug(f"Class {class_name}: TN={tn}, FP={fp}, FN={fn}, TP={tp}")
+                    
+                    # メトリクス計算
+                    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+                    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+                    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+                    specificity = tn / (tn + fp) if (tn + fp) > 0 else 0.0
+                    accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) > 0 else 0.0
+                    
+                    results[f'{task_name}_{class_name}'] = {
+                        'confusion_matrix': {
+                            'TN': int(tn), 'FP': int(fp), 
+                            'FN': int(fn), 'TP': int(tp)
+                        },
+                        'precision': precision,
+                        'recall': recall,
+                        'f1_score': f1,
+                        'specificity': specificity,
+                        'accuracy': accuracy
+                    }
+            
+            # 全体的なメトリクス
+            overall_accuracy = accuracy_score(y_true, y_pred)
+            hamming = hamming_loss(y_true, y_pred)
+            
+            results[f'{task_name}_overall'] = {
+                'accuracy': overall_accuracy,
+                'hamming_loss': hamming
+            }
+        
+        else:
+            # バイナリ分類の場合
+            y_true_flat = y_true.flatten()
+            y_pred_flat = y_pred.flatten()
+            
+            logger.debug(f"Binary classification: y_true unique={np.unique(y_true_flat)}, y_pred unique={np.unique(y_pred_flat)}")
+            
+            # データに少なくとも1つの正例・負例があるかチェック
+            unique_true = np.unique(y_true_flat)
+            unique_pred = np.unique(y_pred_flat)
+            
+            if len(unique_true) == 1 and len(unique_pred) == 1:
+                # 完全に単一クラスの場合
+                if unique_true[0] == 0:  # 全て負例
+                    tn, fp, fn, tp = len(y_true_flat), 0, 0, 0
+                else:  # 全て正例
+                    tn, fp, fn, tp = 0, 0, 0, len(y_true_flat)
+            else:
+                # 通常の混同行列計算
+                cm = confusion_matrix(y_true_flat, y_pred_flat, labels=[0, 1])
+                logger.debug(f"Confusion matrix: {cm}")
+                if cm.shape == (2, 2):
+                    tn, fp, fn, tp = cm.ravel()
+                elif cm.shape == (1, 1):
+                    # 単一クラスのみ存在する場合
+                    if len(unique_true) == 1 and unique_true[0] == 0:
+                        tn, fp, fn, tp = cm[0, 0], 0, 0, 0
+                    else:
+                        tn, fp, fn, tp = 0, 0, 0, cm[0, 0]
+                else:
+                    tn, fp, fn, tp = 0, 0, 0, 0
+            
+            logger.debug(f"Final binary metrics: TN={tn}, FP={fp}, FN={fn}, TP={tp}")
+            
+            # メトリクス計算
+            precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+            recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+            f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+            specificity = tn / (tn + fp) if (tn + fp) > 0 else 0.0
+            accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) > 0 else 0.0
+            
+            # バイナリ分類では class_names[0] を使用
+            key_name = f'{task_name}_{class_names[0]}' if class_names else task_name
+            results[key_name] = {
+                'confusion_matrix': {
+                    'TN': int(tn), 'FP': int(fp), 
+                    'FN': int(fn), 'TP': int(tp)
+                },
+                'precision': precision,
+                'recall': recall,
+                'f1_score': f1,
+                'specificity': specificity,
+                'accuracy': accuracy
+            }
+        
+        logger.debug(f"Results keys: {list(results.keys())}")
+        return results
+
+
     
     def _summarize_cross_validation(self, fold_results):
         """交差検証結果サマリー"""
@@ -665,7 +933,7 @@ class VulnerabilityTrainer:
         return summary
     
     def train_model(self, train_graphs, val_graphs, epochs=100, batch_size=32, learning_rate=0.001):
-        """通常学習"""
+        """通常学習（最終評価付き）"""
         if self.model is None:
             self.setup_model()
         
@@ -674,8 +942,96 @@ class VulnerabilityTrainer:
         history = self._train_single_fold(train_graphs, val_graphs, epochs, batch_size, learning_rate)
         self.training_history = history
         
+        # 最終評価の実行
+        final_evaluation = None
+        if val_graphs:
+            logger.info("📊 最終評価実行中...")
+            
+            val_loader = DataLoader(val_graphs, batch_size=batch_size, shuffle=False)
+            cwe_criterion = nn.BCEWithLogitsLoss()
+            trigger_criterion = nn.BCEWithLogitsLoss()
+            
+            # 詳細評価の実行
+            final_loss, final_acc, predictions = self._evaluate(
+                val_loader, cwe_criterion, trigger_criterion, return_predictions=True
+            )
+            
+            # 詳細メトリクス計算
+            cwe_metrics = self.calculate_detailed_metrics(
+                predictions['cwe_labels'], predictions['cwe_preds'], 
+                task_name="CWE", class_names=self.target_cwes
+            )
+            trigger_metrics = self.calculate_detailed_metrics(
+                predictions['trigger_labels'], predictions['trigger_preds'], 
+                task_name="Trigger", class_names=self.target_cwes
+            )
+            
+            final_evaluation = {
+                'final_loss': final_loss,
+                'final_accuracy': final_acc,
+                'cwe_metrics': cwe_metrics,
+                'trigger_metrics': trigger_metrics,
+                'predictions': predictions
+            }
+            
+            # 結果表示
+            self._log_final_evaluation(final_evaluation)
+        else:
+            logger.info("⚠️ テストデータがないため、最終評価をスキップします")
+        
         logger.info("✅ 学習完了!")
-        return history
+        return history, final_evaluation
+
+    def _log_final_evaluation(self, evaluation):
+        """最終評価結果のログ出力"""
+        logger.info(f"\n🎯 最終テスト結果:")
+        logger.info(f"  総合精度: {evaluation['final_accuracy']:.4f}")
+        logger.info(f"  総合損失: {evaluation['final_loss']:.4f}")
+        
+        # CWE分類結果の詳細表示
+        logger.info(f"\n📈 CWE分類 最終結果:")
+        for cwe in self.target_cwes:
+            cwe_key = f'CWE_{cwe}'
+            if cwe_key in evaluation['cwe_metrics']:
+                metrics = evaluation['cwe_metrics'][cwe_key]
+                cm = metrics['confusion_matrix']
+                logger.info(f"  {cwe}: Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                logger.info(f"")
+                logger.info(f"                    {cwe} 混同行列:")
+                logger.info(f"    TN={cm['TN']}, FP={cm['FP']}")
+                logger.info(f"    FN={cm['FN']}, TP={cm['TP']}")
+                logger.info("")
+        
+        # トリガーライン検出結果の詳細表示
+        logger.info(f"🎯 トリガーライン検出 最終結果:")
+        for cwe in self.target_cwes:
+            trigger_key = f'Trigger_{cwe}'
+            if trigger_key in evaluation['trigger_metrics']:
+                metrics = evaluation['trigger_metrics'][trigger_key]
+                cm = metrics['confusion_matrix']
+                logger.info(f"  {cwe} (Trigger): Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                logger.info(f"")
+                logger.info(f"                    {cwe} トリガーライン混同行列:")
+                logger.info(f"    TN={cm['TN']}, FP={cm['FP']}")
+                logger.info(f"    FN={cm['FN']}, TP={cm['TP']}")
+                logger.info("")
+        
+        # データ分布の表示
+        predictions = evaluation['predictions']
+        cwe_labels_sum = np.sum(predictions['cwe_labels'], axis=0)
+        trigger_labels_sum = np.sum(predictions['trigger_labels'], axis=0)
+        cwe_preds_sum = np.sum(predictions['cwe_preds'], axis=0)
+        trigger_preds_sum = np.sum(predictions['trigger_preds'], axis=0)
+        
+        logger.info(f"📊 データ分布:")
+        for i, cwe in enumerate(self.target_cwes):
+            if i < len(cwe_labels_sum):
+                logger.info(f"  {cwe}:")
+                logger.info(f"    実際の脆弱性: {int(cwe_labels_sum[i])}件")
+                logger.info(f"    予測した脆弱性: {int(cwe_preds_sum[i])}件")
+                logger.info(f"    実際のトリガーライン: {int(trigger_labels_sum[i])}件")
+                logger.info(f"    予測したトリガーライン: {int(trigger_preds_sum[i])}件")
+
     
     def predict(self, test_graphs, confidence_threshold=0.5):
         """予測実行"""
@@ -754,7 +1110,7 @@ class VulnerabilityTrainer:
 
 
 def convert_to_json_serializable(obj):
-    """JSON serializable な型に変換"""
+    """JSON serializable な型に変換（強化版）"""
     if isinstance(obj, (np.integer, np.floating)):
         return obj.item()
     elif isinstance(obj, np.ndarray):
@@ -763,35 +1119,64 @@ def convert_to_json_serializable(obj):
         return obj.cpu().numpy().item() if obj.numel() == 1 else obj.cpu().numpy().tolist()
     elif isinstance(obj, (np.bool_, bool)):
         return bool(obj)
+    elif isinstance(obj, dict):
+        return {key: convert_to_json_serializable(value) for key, value in obj.items()}
+    elif isinstance(obj, (list, tuple)):
+        return [convert_to_json_serializable(item) for item in obj]
+    elif hasattr(obj, '__dict__'):
+        return convert_to_json_serializable(obj.__dict__)
     return obj
 
 
+
 def save_results(results, output_dir, filename_prefix="results"):
-    """結果保存"""
+    """結果保存（強化版）"""
     os.makedirs(output_dir, exist_ok=True)
     
-    # JSON変換処理
-    serializable_results = []
-    for result in results:
-        serializable_result = {}
-        for key, value in result.items():
-            serializable_result[key] = convert_to_json_serializable(value)
-        serializable_results.append(serializable_result)
+    # JSON変換処理（再帰的に変換）
+    serializable_results = convert_to_json_serializable(results)
     
     # JSON保存
     json_file = os.path.join(output_dir, f"{filename_prefix}.json")
-    with open(json_file, 'w', encoding='utf-8') as f:
-        json.dump(serializable_results, f, indent=2, ensure_ascii=False)
-    
-    # CSV保存
-    if serializable_results:
-        csv_file = os.path.join(output_dir, f"{filename_prefix}.csv")
-        df = pd.DataFrame(serializable_results)
-        df.to_csv(csv_file, index=False, encoding='utf-8')
+    try:
+        with open(json_file, 'w', encoding='utf-8') as f:
+            json.dump(serializable_results, f, indent=2, ensure_ascii=False)
         
-        logger.info(f"💾 結果保存: {json_file}, {csv_file}")
+        # CSV保存（可能な場合のみ）
+        if serializable_results and isinstance(serializable_results, list) and len(serializable_results) > 0:
+            # フラットな辞書の場合のみCSV化
+            first_item = serializable_results[0]
+            if isinstance(first_item, dict) and all(not isinstance(v, (dict, list)) for v in first_item.values()):
+                csv_file = os.path.join(output_dir, f"{filename_prefix}.csv")
+                df = pd.DataFrame(serializable_results)
+                df.to_csv(csv_file, index=False, encoding='utf-8')
+                logger.info(f"💾 結果保存: {json_file}, {csv_file}")
+            else:
+                logger.info(f"💾 結果保存: {json_file} (CSV変換不可)")
+        else:
+            logger.info(f"💾 結果保存: {json_file}")
+        
+    except Exception as e:
+        logger.error(f"結果保存エラー: {e}")
+        # フォールバック: 予測結果部分を除外して保存
+        try:
+            filtered_results = []
+            for result in results:
+                if isinstance(result, dict):
+                    filtered_result = {k: v for k, v in result.items() if k != 'test_predictions'}
+                    filtered_results.append(filtered_result)
+                else:
+                    filtered_results.append(result)
+            
+            serializable_filtered = convert_to_json_serializable(filtered_results)
+            with open(json_file, 'w', encoding='utf-8') as f:
+                json.dump(serializable_filtered, f, indent=2, ensure_ascii=False)
+            logger.info(f"💾 結果保存（フィルタ済み）: {json_file}")
+        except Exception as e2:
+            logger.error(f"フォールバック保存もエラー: {e2}")
     
     return json_file
+
 
 
 def main():
@@ -873,23 +1258,179 @@ def main():
         
         # モード別実行
         if args.mode == 'validate':
-            # 交差検証
-            logger.info(f"🔄 交差検証実行: {args.k_folds}-fold")
-            cv_summary, fold_results = trainer.cross_validate(
-                dataset, 
-                k_folds=args.k_folds,
-                epochs=args.epochs,
-                batch_size=args.batch_size,
-                learning_rate=args.learning_rate
+            # 交差検証モード: 学習・テスト分割 → 学習データで交差検証 → 最良モデルでテスト評価
+            logger.info(f"🔄 交差検証モード: {args.approach}")
+            
+            # 1. 最初の学習・テスト分割
+            train_indices, test_indices = dataset.get_initial_train_test_split(test_size=0.2)
+            
+            if len(train_indices) == 0:
+                raise ValueError("学習データがありません")
+            
+            if len(test_indices) == 0:
+                logger.warning("テストデータがありません。全データで交差検証のみ実行します。")
+                # 従来の交差検証実行
+                cv_summary, fold_results = trainer.cross_validate(
+                    dataset, 
+                    k_folds=args.k_folds,
+                    epochs=args.epochs,
+                    batch_size=args.batch_size,
+                    learning_rate=args.learning_rate
+                )
+                save_results([cv_summary], args.output_dir, f"cv_summary_{args.approach}")
+                save_results(fold_results, args.output_dir, f"cv_detailed_{args.approach}")
+                logger.info("✅ 処理完了!")
+                return 0
+            
+            # 2. 学習データのみで交差検証実行
+            logger.info(f"\n📊 学習データで交差検証実行:")
+            cv_splits = dataset.get_cross_validation_splits_from_indices(train_indices, args.k_folds)
+            fold_results = []
+            
+            best_fold = None
+            best_fold_acc = 0
+            
+            for split in cv_splits:
+                logger.info(f"📊 Fold {split['fold']} / {args.k_folds}")
+                
+                # 訓練・検証データ準備
+                fold_train_graphs = [dataset.graphs[i] for i in split['train_indices']]
+                fold_val_graphs = [dataset.graphs[i] for i in split['val_indices']]
+                
+                if len(fold_train_graphs) == 0 or len(fold_val_graphs) == 0:
+                    logger.warning(f"Fold {split['fold']}: データ不足によりスキップ")
+                    continue
+                
+                # モデル初期化
+                trainer.setup_model()
+                
+                # 学習実行
+                fold_history = trainer._train_single_fold(
+                    fold_train_graphs, fold_val_graphs, args.epochs, args.batch_size, args.learning_rate
+                )
+                
+                # 最終検証精度
+                final_val_acc = fold_history['val_accuracies'][-1] if fold_history['val_accuracies'] else 0.0
+                
+                # 最良fold追跡
+                if final_val_acc > best_fold_acc:
+                    best_fold_acc = final_val_acc
+                    best_fold = {
+                        'fold_num': split['fold'],
+                        'model_state': trainer.model.state_dict().copy(),
+                        'accuracy': final_val_acc,
+                        'history': fold_history
+                    }
+                
+                # 結果保存
+                fold_result = {
+                    'fold': split['fold'],
+                    'train_files': split['train_files'],
+                    'val_files': split['val_files'],
+                    'final_val_acc': final_val_acc,
+                    'final_val_loss': fold_history['val_losses'][-1] if fold_history['val_losses'] else 0.0,
+                    'history': fold_history
+                }
+                fold_results.append(fold_result)
+            
+            # 3. 交差検証結果サマリー
+            cv_summary = trainer._summarize_cross_validation(fold_results)
+            logger.info(f"📊 交差検証完了: 最良Fold {best_fold['fold_num']} (精度: {best_fold_acc:.4f})")
+            
+            # 4. 最良モデルでテストデータ評価
+            logger.info(f"\n🎯 最良モデル(Fold {best_fold['fold_num']})でテストデータ評価:")
+            
+            # 最良モデルを復元
+            trainer.model.load_state_dict(best_fold['model_state'])
+            
+            # テストデータ準備
+            test_graphs = [dataset.graphs[i] for i in test_indices]
+            test_loader = DataLoader(test_graphs, batch_size=args.batch_size, shuffle=False)
+            
+            # テスト評価実行
+            cwe_criterion = nn.BCEWithLogitsLoss()
+            trigger_criterion = nn.BCEWithLogitsLoss()
+            
+            test_loss, test_acc, test_predictions = trainer._evaluate(
+                test_loader, cwe_criterion, trigger_criterion, return_predictions=True
             )
+            
+            # 詳細メトリクス計算
+            test_cwe_metrics = trainer.calculate_detailed_metrics(
+                test_predictions['cwe_labels'], test_predictions['cwe_preds'], 
+                task_name="CWE", class_names=trainer.target_cwes
+            )
+            test_trigger_metrics = trainer.calculate_detailed_metrics(
+                test_predictions['trigger_labels'], test_predictions['trigger_preds'], 
+                task_name="Trigger", class_names=trainer.target_cwes
+            )
+            
+            # テスト結果表示
+            final_test_results = {
+                'test_loss': test_loss,
+                'test_accuracy': test_acc,
+                'cwe_metrics': test_cwe_metrics,
+                'trigger_metrics': test_trigger_metrics,
+                'best_fold': best_fold['fold_num'],
+                'best_fold_val_acc': best_fold_acc,
+                'train_test_split': {
+                    'train_graphs': len(train_indices),
+                    'test_graphs': len(test_indices)
+                }
+            }
+            
+            # 結果表示
+            logger.info(f"🏆 最終テスト結果:")
+            logger.info(f"  使用モデル: 交差検証 Fold {final_test_results['best_fold']} の最良モデル")
+            logger.info(f"  検証時精度: {final_test_results['best_fold_val_acc']:.4f}")
+            logger.info(f"  テスト精度: {final_test_results['test_accuracy']:.4f}")
+            logger.info(f"  テスト損失: {final_test_results['test_loss']:.4f}")
+            
+            # CWE分類結果の詳細表示
+            logger.info(f"\n📈 CWE分類 テスト結果:")
+            for cwe in trainer.target_cwes:
+                cwe_key = f'CWE_{cwe}'
+                if cwe_key in final_test_results['cwe_metrics']:
+                    metrics = final_test_results['cwe_metrics'][cwe_key]
+                    cm = metrics['confusion_matrix']
+                    logger.info(f"  {cwe}: Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                    logger.info(f"")
+                    logger.info(f"                    {cwe} 混同行列:")
+                    logger.info(f"    TN={cm['TN']}, FP={cm['FP']}")
+                    logger.info(f"    FN={cm['FN']}, TP={cm['TP']}")
+                    logger.info("")
+            
+            # トリガーライン検出結果の詳細表示
+            logger.info(f"🎯 トリガーライン検出 テスト結果:")
+            for cwe in trainer.target_cwes:
+                trigger_key = f'Trigger_{cwe}'
+                if trigger_key in final_test_results['trigger_metrics']:
+                    metrics = final_test_results['trigger_metrics'][trigger_key]
+                    cm = metrics['confusion_matrix']
+                    logger.info(f"  {cwe} (Trigger): Acc={metrics['accuracy']:.3f}, P={metrics['precision']:.3f}, R={metrics['recall']:.3f}, F1={metrics['f1_score']:.3f}")
+                    logger.info(f"")
+                    logger.info(f"                    {cwe} トリガーライン混同行列:")
+                    logger.info(f"    TN={cm['TN']}, FP={cm['FP']}")
+                    logger.info(f"    FN={cm['FN']}, TP={cm['TP']}")
+                    logger.info("")
+            
+            # 最良モデル保存
+            model_path = trainer.save_model(args.output_dir, f"best_model_{args.approach}")
             
             # 結果保存
             save_results([cv_summary], args.output_dir, f"cv_summary_{args.approach}")
             save_results(fold_results, args.output_dir, f"cv_detailed_{args.approach}")
+            save_results([final_test_results], args.output_dir, f"final_test_results_{args.approach}")
             
+            logger.info(f"💾 最良モデル保存: {model_path}")
+            logger.info(f"🏆 最終テスト精度: {final_test_results['test_accuracy']:.4f}")
+
         elif args.mode == 'train':
-            # 通常学習
-            train_indices, test_indices = dataset.get_train_test_split()
+            # 通常学習モード: 学習・テスト分割 → 学習 → テストデータで検証
+            logger.info(f"🚀 学習モード: {args.approach}")
+            
+            # 学習・テスト分割
+            train_indices, test_indices = dataset.get_initial_train_test_split(test_size=0.2)
             
             if len(train_indices) == 0:
                 raise ValueError("学習データがありません")
@@ -899,7 +1440,8 @@ def main():
             
             logger.info(f"🚀 学習実行: Train={len(train_graphs)}, Test={len(test_graphs)}")
             
-            history = trainer.train_model(
+            # 学習実行（最終評価付き）
+            history, final_evaluation = trainer.train_model(
                 train_graphs, test_graphs,
                 epochs=args.epochs,
                 batch_size=args.batch_size,
@@ -907,17 +1449,113 @@ def main():
             )
             
             # モデル保存
-            trainer.save_model(args.output_dir)
+            model_path = trainer.save_model(args.output_dir, f"trained_model_{args.approach}")
             
             # 学習履歴保存
             save_results([history], args.output_dir, f"training_history_{args.approach}")
             
+            # 最終評価結果保存
+            if final_evaluation:
+                save_results([final_evaluation], args.output_dir, f"final_evaluation_{args.approach}")
+                logger.info(f"💾 最終評価結果保存完了")
+                
+                # 予測結果の詳細保存
+                if 'predictions' in final_evaluation:
+                    predictions_detail = {
+                        'cwe_predictions': final_evaluation['predictions']['cwe_preds'].tolist(),
+                        'cwe_labels': final_evaluation['predictions']['cwe_labels'].tolist(),
+                        'trigger_predictions': final_evaluation['predictions']['trigger_preds'].tolist(),
+                        'trigger_labels': final_evaluation['predictions']['trigger_labels'].tolist(),
+                        'metadata': {
+                            'approach': args.approach,
+                            'target_cwes': trainer.target_cwes,
+                            'test_graphs_count': len(test_graphs),
+                            'total_nodes': len(final_evaluation['predictions']['cwe_preds'])
+                        }
+                    }
+                    save_results([predictions_detail], args.output_dir, f"predictions_detail_{args.approach}")
+            
+            # 学習曲線の簡易表示
+            if history and 'val_accuracies' in history:
+                logger.info(f"\n📈 学習曲線サマリー:")
+                val_accs = history['val_accuracies']
+                train_losses = history['train_losses']
+                val_losses = history['val_losses']
+                
+                logger.info(f"  初期検証精度: {val_accs[0]:.4f}")
+                logger.info(f"  最終検証精度: {val_accs[-1]:.4f}")
+                logger.info(f"  最高検証精度: {max(val_accs):.4f} (Epoch {val_accs.index(max(val_accs))+1})")
+                
+                # 過学習の簡易判定
+                if len(val_losses) > 10:
+                    recent_val_loss_trend = np.mean(val_losses[-5:]) - np.mean(val_losses[-10:-5])
+                    if recent_val_loss_trend > 0.1:
+                        logger.info(f"  ⚠️ 過学習の可能性: 検証損失が上昇傾向")
+                    elif recent_val_loss_trend < -0.1:
+                        logger.info(f"  ✅ 良好な学習: 検証損失が低下傾向")
+                    else:
+                        logger.info(f"  📊 安定した学習: 検証損失が安定")
+            
+            # モデル性能サマリー
+            if final_evaluation:
+                logger.info(f"\n🏆 モデル性能サマリー:")
+                logger.info(f"  アプローチ: {args.approach}")
+                logger.info(f"  学習エポック数: {args.epochs}")
+                logger.info(f"  最終精度: {final_evaluation['final_accuracy']:.4f}")
+                logger.info(f"  保存モデル: {model_path}")
+                
+                # 各CWEの最高F1スコア表示
+                best_cwe_f1 = 0
+                best_trigger_f1 = 0
+                
+                for cwe in trainer.target_cwes:
+                    cwe_key = f'CWE_{cwe}'
+                    if cwe_key in final_evaluation['cwe_metrics']:
+                        f1 = final_evaluation['cwe_metrics'][cwe_key]['f1_score']
+                        best_cwe_f1 = max(best_cwe_f1, f1)
+                    
+                    trigger_key = f'Trigger_{cwe}'
+                    if trigger_key in final_evaluation['trigger_metrics']:
+                        f1 = final_evaluation['trigger_metrics'][trigger_key]['f1_score']
+                        best_trigger_f1 = max(best_trigger_f1, f1)
+                
+                logger.info(f"  最高CWE分類F1: {best_cwe_f1:.4f}")
+                logger.info(f"  最高トリガー検出F1: {best_trigger_f1:.4f}")
+
         elif args.mode == 'test':
-            # 検知モード
+            # 検知モード: 保存されたモデルで実際の検知を実行
             logger.info(f"🎯 検知モード: {args.approach}")
             
-            # モデル初期化（事前学習が必要）
+            # 保存されたモデルのパス
+            model_patterns = [
+                f"best_model_{args.approach}.pth",      # validateモードで保存
+                f"trained_model_{args.approach}.pth",   # trainモードで保存
+                f"vulnerability_model_{args.approach}.pth"  # 従来の命名
+            ]
+            
+            model_path = None
+            for pattern in model_patterns:
+                candidate_path = os.path.join(args.output_dir, pattern)
+                if os.path.exists(candidate_path):
+                    model_path = candidate_path
+                    break
+            
+            if model_path is None:
+                logger.error(f"保存されたモデルが見つかりません。以下のパスを確認してください:")
+                for pattern in model_patterns:
+                    logger.error(f"  - {os.path.join(args.output_dir, pattern)}")
+                raise FileNotFoundError("モデルファイルが見つかりません")
+            
+            logger.info(f"📂 モデル読み込み: {model_path}")
+            
+            # モデル読み込み
+            checkpoint = torch.load(model_path, map_location='cpu')
             trainer.setup_model()
+            trainer.model.load_state_dict(checkpoint['model_state_dict'])
+            
+            logger.info(f"✅ モデル読み込み完了")
+            logger.info(f"  学習時アプローチ: {checkpoint.get('approach', 'unknown')}")
+            logger.info(f"  対象CWE: {checkpoint.get('target_cwes', 'unknown')}")
             
             # 予測実行
             results = trainer.predict(dataset.graphs, confidence_threshold=args.confidence_threshold)
@@ -945,8 +1583,30 @@ def main():
                 logger.info(f"   {i+1:2d}. {trigger_mark} {result['filename']}:{result['ir_line']} "
                           f"- {result['cwe_id']} (信頼度: {result['combined_score']:.3f})")
             
+            # ファイル別統計
+            file_stats = defaultdict(int)
+            for result in results:
+                file_stats[result['filename']] += 1
+            
+            logger.info(f"\n📁 ファイル別検知統計 Top 5:")
+            sorted_files = sorted(file_stats.items(), key=lambda x: x[1], reverse=True)
+            for i, (filename, count) in enumerate(sorted_files[:5]):
+                logger.info(f"   {i+1}. {filename}: {count}件")
+            
             # 結果保存
             save_results(results, args.output_dir, f"detection_results_{args.approach}")
+            
+            # 統計サマリー保存
+            detection_summary = {
+                'total_detections': len(results),
+                'trigger_lines': trigger_count,
+                'cwe_counts': dict(cwe_counts),
+                'file_stats': dict(file_stats),
+                'confidence_threshold': args.confidence_threshold,
+                'model_used': model_path,
+                'approach': args.approach
+            }
+            save_results([detection_summary], args.output_dir, f"detection_summary_{args.approach}")
         
         logger.info(f"✅ 処理完了! 結果は {args.output_dir} に保存されました")
         

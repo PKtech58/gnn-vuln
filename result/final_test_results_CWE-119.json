@@ -1,0 +1,42 @@
+[
+  {
+    "test_loss": 0.03861110657453537,
+    "test_accuracy": 1.0,
+    "cwe_metrics": {
+      "CWE_CWE-119": {
+        "confusion_matrix": {
+          "TN": 10,
+          "FP": 0,
+          "FN": 0,
+          "TP": 60
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "specificity": 1.0,
+        "accuracy": 1.0
+      }
+    },
+    "trigger_metrics": {
+      "Trigger_CWE-119": {
+        "confusion_matrix": {
+          "TN": 58,
+          "FP": 0,
+          "FN": 0,
+          "TP": 12
+        },
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "specificity": 1.0,
+        "accuracy": 1.0
+      }
+    },
+    "best_fold": 2,
+    "best_fold_val_acc": 1.0,
+    "train_test_split": {
+      "train_graphs": 25,
+      "test_graphs": 7
+    }
+  }
+]

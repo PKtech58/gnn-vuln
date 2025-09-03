@@ -111,81 +111,52 @@ class JulietHeaderFixCompiler:
         
         return source_files
 
+    def _compile_one(self, src: Path, include_flags, out_bc: Path, defines: list[str]) -> bool:
+        cmd = [str(self.clang_path), "-c", "-emit-llvm", "-O0", "-g",
+               "-fno-discard-value-names", *include_flags, *defines, str(src), "-o", str(out_bc)]
+        rc, out, err = self._run_command(cmd)
+        return rc == 0
+    
+    # 2) 変更: compile_with_headers() を「good/bad 2回出力」に対応
     def compile_with_headers(self, main_file: Path, output_dir: Path) -> bool:
-        """ヘッダー問題を解決してコンパイル"""
-        
-        # Step 1: ヘッダーディレクトリ検索
         header_dirs = self.find_header_directories(main_file)
-        if not header_dirs:
-            logger.error(f"❌ ヘッダーディレクトリが見つかりません: {main_file}")
-            return False
-        
-        # Step 2: ヘッダー存在確認
         verified_dirs = self.verify_headers(header_dirs)
-        if not verified_dirs:
-            logger.error(f"❌ 有効なヘッダーディレクトリがありません: {main_file}")
-            return False
-        
-        # Step 3: サポートファイル収集
         support_files = self.collect_source_files(verified_dirs)
-        
-        # Step 4: コンパイルコマンド構築
+    
         include_flags = []
-        for header_dir in verified_dirs:
-            include_flags.extend(["-I", str(header_dir)])
-        
+        for d in verified_dirs:
+            include_flags.extend(["-I", str(d)])
+    
         temp_dir = output_dir / "temp"
         temp_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Step 5: 2段階コンパイル実行
-        try:
+    
+        # 2回ぶん回す: [("bad", ["-DOMITGOOD"]), ("good", ["-DOMITBAD"])]
+        ok_all = True
+        for variant, defines in [("bad", ["-DOMITGOOD", "-DINCLUDEMAIN"]),
+                                 ("good", ["-DOMITBAD", "-DINCLUDEMAIN"])]:
             bc_files = []
-            
-            # メインファイルコンパイル
-            main_bc = temp_dir / f"{main_file.stem}.bc"
-            cmd_main = [
-                str(self.clang_path), "-c", "-emit-llvm", "-O0", "-g",
-                "-fno-discard-value-names"
-            ] + include_flags + [str(main_file), "-o", str(main_bc)]
-            
-            logger.info(f"🔨 メインファイルコンパイル: {main_file.name}")
-            logger.info(f"📋 コマンド: {' '.join(cmd_main)}")
-            
-            rc, out, err = self._run_command(cmd_main)
-            if rc != 0:
-                logger.error(f"❌ メインファイルコンパイル失敗: {err}")
-                return False
+    
+            # メイン
+            main_bc = temp_dir / f"{main_file.stem}.{variant}.bc"
+            if not self._compile_one(main_file, include_flags, main_bc, defines):
+                ok_all = False
+                continue
             bc_files.append(main_bc)
-            
-            # サポートファイルコンパイル
-            for support_file in support_files:
-                support_bc = temp_dir / f"{support_file.stem}.bc"
-                cmd_support = [
-                    str(self.clang_path), "-c", "-emit-llvm", "-O0", "-g",
-                    "-fno-discard-value-names"
-                ] + include_flags + [str(support_file), "-o", str(support_bc)]
-                
-                rc, out, err = self._run_command(cmd_support)
-                if rc == 0:
-                    bc_files.append(support_bc)
-            
-            # llvm-linkで統合
-            unified_ll = output_dir / f"{main_file.stem}_unified.ll"
-            cmd_link = [str(self.llvm_link_path), "-S", "-o", str(unified_ll)] + [str(f) for f in bc_files]
-            
-            logger.info(f"🔗 統合リンク: {len(bc_files)} ファイル")
+    
+            # サポート（必要なら）
+            for s in support_files:
+                out_bc = temp_dir / f"{s.stem}.{variant}.bc"
+                if self._compile_one(s, include_flags, out_bc, defines):
+                    bc_files.append(out_bc)
+    
+            # リンクして .ll へ
+            out_ll = output_dir / f"{main_file.stem}_{variant}.ll"
+            cmd_link = [str(self.llvm_link_path), "-S", "-o", str(out_ll), *map(str, bc_files)]
             rc, out, err = self._run_command(cmd_link)
-            
-            if rc == 0 and unified_ll.exists():
-                logger.info(f"✅ 成功: {unified_ll.name} ({unified_ll.stat().st_size} bytes)")
-                return True
-            else:
-                logger.error(f"❌ 統合リンク失敗: {err}")
-                return False
-                
-        except Exception as e:
-            logger.error(f"❌ コンパイル例外: {e}")
-            return False
+            if not (rc == 0 and out_ll.exists()):
+                ok_all = False
+    
+        return ok_all
 
     def _run_command(self, cmd: List[str]) -> tuple:
         """コマンド実行"""
